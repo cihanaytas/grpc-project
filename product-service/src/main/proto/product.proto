@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option java_package = "com.example";
+option java_outer_classname = "ProductProto";
+
+service ProductService {
+  rpc AddProduct (ProductRequest) returns (ProductResponse);
+  rpc GetProduct (ProductIdRequest) returns (ProductResponse);
+  rpc ListProducts (Empty) returns (ProductListResponse);
+}
+
+message Product {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  double price = 4;
+}
+
+message ProductRequest {
+  Product product = 1;
+}
+
+message ProductIdRequest {
+  string id = 1;
+}
+
+message ProductResponse {
+  Product product = 1;
+}
+
+message ProductListResponse {
+  repeated Product products = 1;
+}
+
+message Empty {}
